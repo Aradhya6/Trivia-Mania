@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Analysis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress-container">
+    <h1>Subject-wise Progress</h1>
+    <div id="subjectScores"></div>  <!-- Scores will be displayed here -->
+    <button onclick="window.location.href='index.html';">Back to Quiz</button>
+  </div>
+
+  <script>
+    window.onload = function() {
+      const subjectScoresDiv = document.getElementById('subjectScores');
+      const storedScores = localStorage;
+
+      if (Object.keys(storedScores).length === 0) {
+        subjectScoresDiv.innerHTML = "<p>No scores found. Please complete a quiz first.</p>";
+        return;
+      }
+
+      let scoreHtml = "<ul>";
+      for (let subject in storedScores) {
+        if (subject !== 'userEmail' && subject !== 'userPassword') { // Avoid storing email/password
+          scoreHtml += `<li>${subject}: ${storedScores[subject]} / 10</li>`;
+        }
+      }
+      scoreHtml += "</ul>";
+
+      subjectScoresDiv.innerHTML = scoreHtml;
+    };
+  </script>
+</body>
+</html>

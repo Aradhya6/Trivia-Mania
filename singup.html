@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Background image container */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.pinimg.com/originals/db/34/d4/db34d40b271fb59477621550bf73ea0b.jpg') no-repeat center center / cover;
+      filter: blur(4px); /* Apply blur effect */
+      z-index: -1; /* Ensure it stays behind the form */
+    }
+
+    .form-container {
+      width: 350px;
+      background: rgba(204, 231, 255, 0.7);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1; /* Ensure it appears above the blurred background */
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #165292;
+    }
+
+    input {
+      width: 95%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #165292;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .error {
+      margin-top: 10px;
+      color: red;
+      font-size: 0.9em;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div> <!-- Blurred background image -->
+
+  <div class="form-container">
+    <h1>Sign Up</h1>
+    <input type="text" id="signupName" placeholder="Enter Your Name" required>
+    <input type="email" id="signupEmail" placeholder="Enter Email" required>
+    <input type="password" id="signupPassword" placeholder="Enter Password" required>
+    <button id="signupBtn">Sign Up</button>
+    <div class="error" id="error"></div>
+    <p style="text-align:center;">Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <script>
+    document.getElementById('signupBtn').addEventListener('click', () => {
+      const name = document.getElementById('signupName').value;
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      const errorDiv = document.getElementById('error');
+
+      // Clear previous error messages
+      errorDiv.textContent = '';
+
+      // Validate name
+      if (!name) {
+        errorDiv.textContent = 'Please enter your name.';
+        return;
+      }
+
+      // Validate email format
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (!email.match(emailPattern)) {
+        errorDiv.textContent = 'Please enter a valid email address.';
+        return;
+      }
+
+      // Store name, email, and password in localStorage
+      localStorage.setItem('userName', name);
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userPassword', password);
+
+      alert('Sign-Up Successful! You can now log in.');
+      window.location.href = 'login.html';  // Redirect to login page
+    });
+  </script>
+</body>
+</html>

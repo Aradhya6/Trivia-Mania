@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* This will hide the horizontal scrollbar */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://cdn3.vectorstock.com/i/1000x1000/49/02/seamless-pattern-question-marks-quiz-background-vector-29564902.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInBackground 2s ease-in-out;
+        }
+
+        @keyframes fadeInBackground {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(51, 51, 51, 0.8);
+            padding: 10px 20px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .navbar:hover {
+            background-color: rgba(51, 51, 51, 1);
+        }
+
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            animation: slideInLeft 1s forwards;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-menu li {
+            margin-left: 20px;
+        }
+
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            animation: slideInRight 1s forwards;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .navbar-menu a:hover {
+            color: #ddd;
+            transform: scale(1.1);
+        }
+
+        .profile-section, .performance-section {
+            width: 80%;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: zoomIn 0.5s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .profile-section:hover, .performance-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .profile-pic img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        .profile-details {
+            font-size: 18px;
+        }
+
+        .performance-content {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            animation: fadeInTable 1s forwards;
+        }
+
+        @keyframes fadeInTable {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            position: fixed;
+            bottom: 0;
+            animation: fadeInFooter 1s forwards;
+        }
+
+        @keyframes fadeInFooter {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">Trivia Mania</div>
+        <ul class="navbar-menu">
+            <li><a href="homepage.html">Dashboard</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="index.html">Quizzes</a></li>
+            <li><a href="main.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="profile-section">
+        <h2>Profile</h2>
+        <div class="profile-info">
+            <div class="profile-pic">
+                <img src="https://static.vecteezy.com/system/resources/previews/009/749/643/original/woman-profile-mascot-illustration-female-avatar-character-icon-cartoon-girl-head-face-business-user-logo-free-vector.jpg" alt="Profile Picture">
+            </div>
+            <div class="profile-details">
+                <h3 id="student-name">Loading name...</h3>
+                <p>Email: <span id="student-email">Loading email...</span></p>
+                <p>Joined: <span id="student-joined">Loading date...</span></p>
+                <p>Username: <span id="student-username">Loading username...</span></p>
+                <p>Total Quizzes Taken: <span id="total-quizzes">Loading...</span></p>
+                <p>Average Score: <span id="average-score">Loading...</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="performance-section">
+        <h2>Trivia</h2>
+        <div class="performance-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quiz</th>
+                        <th>Score</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="performance-data">
+                    <!-- Performance data will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            loadProfileInfo();
+            loadPerformanceData();
+        });
+
+        function loadProfileInfo() {
+            // Simulate fetching data
+            const studentName = "Aradhya";
+            const studentEmail = "aradhya3124@gmail.com";
+            const studentJoined = "2023/01/15";
+            const studentUsername = "aradhya";
+            const totalQuizzes = 10;
+            const averageScore = 85;
+
+            document.getElementById('student-name').innerText = studentName;
+            document.getElementById('student-email').innerText = studentEmail;
+            document.getElementById('student-joined').innerText = studentJoined;
+            document.getElementById('student-username').innerText = studentUsername;
+            document.getElementById('total-quizzes').innerText = totalQuizzes;
+            document.getElementById('average-score').innerText = averageScore + "%";
+        }
+
+        function loadPerformanceData() {
+            const performanceData = [
+                { quiz: "Science and nature", score: 40, date: "2024-11-01" },
+                { quiz: "History", score: 36, date: "2024-11-02" },
+                { quiz: "Films", score: 42, date: "2024-11-28" }
+            ];
+            const tbody = document.getElementById('performance-data');
+            performanceData.forEach(data => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${data.quiz}</td><td>${data.score}</td><td>${data.date}</td>`;
+                tbody.appendChild(tr);
+            });
+        }
+    </script>
+</body>
+</html>

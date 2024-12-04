@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia</title>
+    
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url('https://st3.depositphotos.com/7865540/13803/i/600/depositphotos_138030202-stock-photo-physics-concept-on-background.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        padding: 10px 20px;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .navbar-logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .navbar-menu {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar-menu li {
+        margin-left: 20px;
+    }
+
+    .navbar-menu a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .navbar-menu a:hover {
+        color: #ddd;
+    }
+
+    .login-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .login-button:hover {
+        background-color: #45a049;
+    }
+
+    .hero-section {
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        animation: fadeIn 2s;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .cta-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+        background-color: #45a049;
+    }
+
+    .quiz-info {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .quiz-cards {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .quiz-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        width: 300px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .quiz-card img {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .quiz-card:hover {
+        transform: scale(1.05);
+    }
+
+    .leaderboard-section {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .leaderboard {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .leaderboard-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        width: 200px;
+        padding: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+    }
+
+    .about-section {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">Trivia Mania</div>
+        <ul class="navbar-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#quizzes">Quizzes</a></li>
+            <li><a href="#leaderboard">Leaderboard</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <button class="login-button" onclick="window.location.href='login.html'">Login</button>
+    </nav>
+
+    <header class="hero-section" id="home">
+        <h1>Welcome to Trivia</h1>
+        <p>Test your knowledge with our fun and engaging quizzes!</p>
+        <button class="cta-button" onclick="window.location.href='login.html'">Start Now</button>
+    </header>
+
+    <section class="quiz-info" id="quizzes">
+        <h2>Popular Quizzes</h2>
+        <div class="quiz-cards">
+            <div class="quiz-card">
+                <img src="https://th.bing.com/th/id/OIP.1GrCf7F6WiwWk_dDJ3M8cgAAAA?rs=1&pid=ImgDetMain" alt="Science Quiz">
+                <h3>Science Quiz</h3>
+                <p>Explore the wonders of science and test your knowledge!</p>
+            </div>
+            <div class="quiz-card">
+                <img src="https://th.bing.com/th/id/OIP.OliHA8VQvfbGKdOgH8c4kQHaD4?rs=1&pid=ImgDetMain" alt="History Quiz">
+                <h3>History Quiz</h3>
+                <p>Dive into the past and see how much you know about history!</p>
+            </div>
+            <div class="quiz-card">
+                <img src="https://th.bing.com/th/id/OIP.88upKYenzjrK96rRIhVU5gHaEK?w=1200&h=675&rs=1&pid=ImgDetMain" alt="Entertainment Quiz">
+                <h3>Entertainment Quiz</h3>
+                <p>Test your knowledge on movies, music, and more!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="leaderboard-section" id="leaderboard">
+        <h2>Leaderboard</h2>
+        <div class="leaderboard">
+            <div class="leaderboard-card">
+                <h3>1. Manasa</h3>
+                <p>Score: 950</p>
+            </div>
+            <div class="leaderboard-card">
+                <h3>2. Rukmini</h3>
+                <p>Score: 900</p>
+            </div>
+            <div class="leaderboard-card">
+                <h3>3. Aradhya</h3>
+                <p>Score: 850</p>
+            </div>
+            <div class="leaderboard-card">
+                <h3>4. Gayatri</h3>
+                <p>Score: 800</p>
+            </div>
+            <div class="leaderboard-card">
+                <h3>5. Alina</h3>
+                <p>Score: 750</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2>About Quiz App</h2>
+        <p>Quiz App is a fun and engaging platform where you can test your knowledge on various topics. From science to history, entertainment to technology, we have quizzes that cater to all interests and ages. Join our community, challenge yourself, and climb the leaderboard to become the ultimate quiz champion!</p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2023 Quiz App. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Background image container */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.pinimg.com/originals/db/34/d4/db34d40b271fb59477621550bf73ea0b.jpg') no-repeat center center / cover;
+      filter: blur(4px); /* Apply the blur effect */
+      z-index: -1; /* Ensure it stays behind the form */
+    }
+
+    .form-container {
+      width: 350px;
+      background: rgba(222, 184, 135, 0.779);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1; /* Ensure it appears above the blurred background */
+    }
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: black;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #ff8c00;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      align-self: center;
+    }
+    button:hover {
+      background: #d46a00;
+    }
+    .error {
+      margin-top: 10px;
+      color: red;
+      font-size: 0.9em;
+      text-align: center;
+    }
+    .forgot-password {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #007bff;
+      cursor: pointer;
+    }
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+    .additional-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .additional-link a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .additional-link a:hover {
+      text-decoration: underline;
+    }
+    input {
+      width: 330px;
+    }
+  </style>
+</head>
+<body>
+    <div class="background"></div> <!-- Blurred background image -->
+
+    <div class="form-container">
+      <h1>Sign In</h1>
+      <input type="email" id="email" placeholder="Enter Email" required>
+      <input type="password" id="password" placeholder="Enter Password" required>
+      <button id="signinBtn">Sign In</button>
+      <div class="error" id="error"></div>
+      <p style="text-align:center;">Don't have an account? <a href="singup.html">Sign Up</a></p>
+    </div>
+  
+    <script>
+      document.getElementById('signinBtn').addEventListener('click', () => {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const errorDiv = document.getElementById('error');
+  
+        // Clear previous error message
+        errorDiv.textContent = '';
+  
+        // Email validation (check if it's in a valid email format)
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!email.match(emailPattern)) {
+          errorDiv.textContent = 'Please enter a valid email address.';
+          return; // Stop further execution if email is invalid
+        }
+  
+        // If email is valid, proceed with password check
+        const storedEmail = localStorage.getItem('userEmail');
+        const storedPassword = localStorage.getItem('userPassword');
+  
+        // Validate stored email and password
+        if (email === storedEmail && password === storedPassword) {
+          window.location.href = 'homepage.html'; // Redirect to homepage
+        } else {
+          errorDiv.textContent = 'Invalid email or password.';
+        }
+      });
+    </script>
+  </body>
+</html>
