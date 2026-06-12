@@ -112,10 +112,4 @@ Please keep code changes focused and well-commented.
 
 ---
 
-## 📄 License
-
-This project is open source. Feel free to use, modify, and distribute it.
-
----
-
 *Built with curiosity and caffeine by [Aradhya6](https://github.com/Aradhya6)*
